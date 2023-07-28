@@ -1,0 +1,75 @@
+<div class="container">
+  
+  <h3>Insurance Calculator</h3>
+  <div *ngIf="showDiv" class="alert alert-dismissible" [ngClass]="isQuoteAvailable ? 'alert-success':'alert-danger'">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="showDiv = false">&times;</a>
+    <label>{{msg}}</label>
+  </div>
+  <div class="form-group">
+    <form [formGroup]="insuranceForm" (ngSubmit)="onSubmit()">
+
+      <label for="category">Category: </label>
+      <select 
+      formControlName="category"
+      (change) = "onCategoryChange()"
+      class="form-control" >
+        <option *ngFor = "let cat of availableCategories"
+        [value] = "cat">
+          {{cat}}
+        </option>
+      </select>
+
+      <label for="make">Make: </label>
+      <select 
+      class="form-control" 
+      (change) = "onMakeChange()"
+      formControlName="make">
+      <option *ngFor = "let make of availableMake"
+      [value] = "make">
+        {{make}}
+      </option>
+      </select>
+
+      <label for="model">Model: </label>
+      <select class="form-control" 
+      formControlName="model">
+        <option *ngFor = "let model of availableModels"
+      [value] = "model">
+        {{model}}
+      </option>
+      </select>
+
+
+      <label for="age">Age: </label>
+      <input class='form-control' id="age" type="text" formControlName="age">
+
+
+      <label for="driving_exp">Driving Expierence: </label>
+      <input class='form-control' id="driving_exp" type="text" formControlName="driving_exp">
+
+      <label for="accidents">Accidents: </label>
+      <input class='form-control' id="accidents" type="text" formControlName="accidents">
+
+      <label for="claims">Claims: </label>
+      <input class='form-control' id="claims" type="text" formControlName="claims">
+
+      <label for="value">Car Value: </label>
+      <input class='form-control' id="value" type="text" formControlName="value">
+
+      <label for="distance">Distance: </label>
+      <input class='form-control' id="distance" type="text" formControlName="distance">
+
+      <label for="history">History: </label>
+      <input class='form-control' id="history" type="text" formControlName="history">
+
+      <p class="note">All fields should be non-negative numbers only.</p>
+
+      <div class="center">
+        <button class="btn btn-secondary" type="button" (click)="insuranceForm.reset()">Reset</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!insuranceForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  
+</div>

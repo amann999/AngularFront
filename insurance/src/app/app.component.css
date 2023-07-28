@@ -1,0 +1,21 @@
+.container{
+    width: 50%;
+}
+
+label{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.btn{
+    margin: 5px;
+}
+.center{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.note{
+    margin-top: 10px;
+    font-weight: bold;
+}
